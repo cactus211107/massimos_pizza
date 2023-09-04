@@ -1,0 +1,14 @@
+{% extends 'template.html' %}
+{% block head %}
+    <link rel="stylesheet" href="/static/css/logup.css">
+{% endblock %}
+{% block content %}
+    <form action="/login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" value="{{ username }}">
+        <label for="pw">Password:</label>
+        <input name='pw' type="password" value="{{ pw }}">
+        <input type="submit" value="Sign Up!">
+        <span class="login-error">{{ e }}</span>
+    </form>
+{% endblock %}

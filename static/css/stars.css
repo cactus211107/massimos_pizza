@@ -1,0 +1,19 @@
+.star {
+    width: 50px!important;
+    height: 50px!important;
+    cursor: pointer;
+}
+.star > svg {
+    fill: #bbb;
+    stroke: #bbb;
+    width: 50px!important;
+    height: 50px!important;
+}
+.star-select > svg {
+    fill:gold!important;
+    stroke: gold!important;
+}
+.stars {
+    display: flex;
+    margin-bottom: 30px;
+}

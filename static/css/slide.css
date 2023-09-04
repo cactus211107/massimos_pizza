@@ -1,0 +1,111 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+.line--- {
+  width: 70%;
+  height: 2px;
+  background-color: #ccc;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#slide-focus {
+  max-width: 500px; /*480+10padding+10padding*/
+  max-height: 380px;/*same as ^^^ but for ehgith*/
+  min-width: 500px;
+  min-height: 380px;
+  object-fit: contain;
+  height: auto;
+  padding: 2px;
+  display: block;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 15px;
+  margin: auto;
+  border: 1px #ccc solid;
+  margin-top: 10px;
+}
+.slide {
+  width: 750px;
+  box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.36);
+  background-color: #fff;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+#slide-focus > img {
+  max-width: 100%;
+  max-height: 360px;
+  width: 100%;
+  object-fit: contain;
+}
+#slide-content > img {
+  width: 180px;
+  height: 135px;
+  object-fit: contain;
+  height: auto;
+  padding: 2px;
+  display: block;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+#slide-content {
+  display: flex;
+  position: relative;
+  transition: left 0.2s;
+}
+.slide-content {
+  max-width: 60vw;
+  height: 180px;
+  /* overflow-x: hidden; */
+  display: flex;
+}
+.gradient, .gradient-reversed {
+  background: rgb(0,0,0);
+  height: 180px;
+  min-width: 30px;
+  position: absolute;
+}
+.gradient {
+  background: linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);
+}
+.gradient-reversed {
+  background: linear-gradient(270deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 100%);
+  transform: translateX(720px);
+}
+.focussed-img {
+  outline: lightblue 5px solid;
+}
+#slideshow {
+  overflow: hidden;
+  width: 750px;
+  /* filter:brightness(0) */
+}
+.nextBtn {
+  background-image: url('/static/i/fw_arrow.svg');
+  top: -115px;
+  left: 712px;
+}
+.prevBtn {
+  background-image: url('/static/i/bw_arrow.svg');
+  top: 115px;
+}
+.slidebtn {
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  z-index: 500;
+}
+.slide-focus-text {
+  font-size: 3em;
+  color: #ccc;
+  text-align: center;
+  width: 100%;
+  display: block;
+  transform: translateY(50px);
+}

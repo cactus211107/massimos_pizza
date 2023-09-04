@@ -1,0 +1,101 @@
+{% extends 'template.html' %}
+{% block head %}
+    <style>
+        .thumb {
+            width: 180px;
+            object-fit: contain;
+            height: auto;
+            padding: 2px;
+            display: block;
+            padding: 5px;
+            border-radius: 3px;
+            border-radius: 5px;
+            height: 135px;
+        }
+        .review {
+            display: flex;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.1s;
+        }
+        button:focus {
+            outline: none;
+        }
+        .rev-text-cont {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="reviews">
+        <ul id="reviews">
+            
+        </ul>
+        <div style="display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 40px;">
+            <button onclick="add(unpublished)" style="margin-bottom: 2.5px;">View Unpublished</button>
+            <button onclick="add(published)">View Published</button>
+        </div>
+    </div>
+    <script>
+        const reviewsUL = document.querySelector('#reviews');
+        const json = `{"a":{{ reviews | tojson | safe }}}`.replaceAll('\n','').replaceAll('\r','')
+        console.log(json.search('\n'))
+        const all = JSON.parse(json.replaceAll('\n','')).a;
+        let _i = [];
+        // for (let i of all) {
+        //     if (i[7] == 0) {
+        //         _i.push(i)
+        //     }
+        // }
+        const unpublished = JSON.parse(`{"a":{{ unpublished | tojson | safe }}}`.replaceAll('\n','').replaceAll('\r','')).a;
+        _i = [];
+        // for (let i of all) {
+        //     if (i[7] == 1) {
+        //         _i.push(i)
+        //     }
+        // }
+        console.log(`{"a":{{ published | tojson | safe }}}`)
+        console.log(`{"a":{{ unpublished | tojson | safe }}}`)
+        const published = JSON.parse(`{"a":{{ published | tojson | safe }}}`.replaceAll('\n','').replaceAll('\r','')).a;
+        function add(r) {
+            reviewsUL.innerHTML = ''
+            for (let i of r) {
+                reviewsUL.innerHTML+=`
+                <li class="review">
+                    <img src="/${ JSON.parse('{"a":'+i[6].replaceAll("'",'"')+'}').a[0] }" alt="thumb" class="thumb">
+                    <div class="rev-text-cont">
+                        <a href="/review/${ i[0] }/${ i[1] }">${ i[1] }</a>
+                        <span>Status: ${ {0:"Unpublished",1:"Published",2:"Archived"}[i[7]] }</span>
+                        <span>Reviewed ${i[4]}</span>
+                        <button onclick="window.location.href='/edit/${ i[0] }'" style="padding: 5px 20px;">Edit</button>
+                    </div>
+                </li>
+                `
+            }
+            if (!reviewsUL.innerHTML) {
+                reviewsUL.innerHTML = '<span> You have no reviews. </span>'
+            }
+        }
+        add(all)
+    </script>
+{% endblock %}
+<!-- {% for i,review in enumerate(reviews) %}
+                <li class="review">
+                    <img src="/{{ thumbs[i] }}" alt="thumb" class="thumb">
+                    <div style="display: flex;">
+                        <a href="/review/{{ review[0] }}/{{ review[1] }}">{{ review[1] }}</a>
+                        <span>Status: {{ {0:"Unpublished",1:"Published",2:"Archived"}[review[7]] }}</span>
+                    </div>
+                </li>
+            {% endfor %} -->

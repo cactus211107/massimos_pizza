@@ -1,0 +1,44 @@
+/* Login / Sign Up  (log in + sign up = log up) (i made a typo when i was making this in an unventilated room with a propane heater.*/
+input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.1s;
+}
+input[type="submit"]:hover {
+    background-color: #444;
+}
+.container {
+    height: calc(100vh - 111px - 200px);
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 360px;
+}
+input[type='text'],input[type="password"] {
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+body {
+    background-color: #f0f0f0;
+    height: 100vh;
+}
